@@ -1,0 +1,28 @@
+export const personal = {
+  name: 'Mudiam Nehal Reddy',
+  shortName: 'Nehal Reddy',
+  initials: 'NR',
+  tagline: 'CS + Data Science · Explorer of Systems and Ideas',
+  location: 'Hyderabad, India',
+  email: 'mudiam.nehal@gmail.com',
+  phone: '+91 6301130977',
+  linkedin: 'https://linkedin.com/in/nehal-reddy-571931205/',
+  github: 'https://github.com/',
+  resume: '/Nehal.pdf',
+  cgpa: '8.48',
+  college: 'VNR Vignana Jyothi Institute of Engineering & Technology',
+  degree: 'B.Tech · Computer Science & Engineering (Data Science)',
+  batch: '2023 – 2027',
+  quotes: [
+    'The best algorithms, like the best recipes, balance precision with intuition.',
+    'Every great explorer starts with a map. Mine is written in code.',
+    'Data without story is just noise. I tell the story.',
+  ],
+  passions: [
+    { icon: '⬡', label: 'Graph Neural Networks' },
+    { icon: '◈', label: 'ML Systems' },
+    { icon: '◎', label: 'Culinary Arts' },
+    { icon: '◉', label: 'Public Speaking' },
+    { icon: '▣', label: 'Competitive DSA' },
+  ],
+}

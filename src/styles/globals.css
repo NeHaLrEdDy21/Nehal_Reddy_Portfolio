@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg:       #F2EFEA;
+  --surface:  #FFFFFF;
+  --ink:      #0A0A0A;
+  --muted:    #6B6B6B;
+  --border:   #E0DDD8;
+  --signal:   #E8003D;
+  --lime:     #C8FF57;
+  --cobalt:   #0038FF;
+  --amber:    #FF8C00;
+  --ink-20:   rgba(10,10,10,0.15);
+
+  /* Legacy aliases used by existing 3D components */
+  --void:     #F2EFEA;
+  --dim:      #E8E5E0;
+  --white:    #0A0A0A;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  cursor: none;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--signal); }
+
+/* Selection */
+::selection {
+  background: var(--signal);
+  color: #ffffff;
+}
+
+/* Display — Bebas Neue for all headings */
+.display {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+}
+
+/* Monospace sections */
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Section label style */
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Pill utility */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4em 1em;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Card lift */
+.card-lift {
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+/* Red glow */
+.glow-red {
+  box-shadow: 0 0 20px rgba(232,0,61,0.25), 0 0 60px rgba(232,0,61,0.08);
+}
+
+/* Custom cursor */
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--ink);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}
+
+#custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(10,10,10,0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.18s ease, width 0.25s ease, height 0.25s ease, opacity 0.2s ease;
+}
+
+#custom-cursor.cursor-hover {
+  width: 12px;
+  height: 12px;
+  background: var(--signal);
+}
+#custom-cursor-ring.cursor-hover {
+  width: 44px;
+  height: 44px;
+  border-color: rgba(232,0,61,0.5);
+}
+
+/* Glass — updated for light bg */
+.glass {
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(10,10,10,0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
