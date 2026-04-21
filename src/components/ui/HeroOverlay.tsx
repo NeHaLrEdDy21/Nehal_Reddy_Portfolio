@@ -17,13 +17,13 @@ export function HeroOverlay() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="absolute top-8 left-8"
+        className="absolute top-6 left-4 sm:top-8 sm:left-8"
         style={{ pointerEvents: 'auto' }}
       >
-        <p className="mono" style={{ fontSize: '0.72rem', letterSpacing: '0.15em', color: 'var(--muted)', textTransform: 'uppercase' }}>
+        <p className="mono" style={{ fontSize: '0.65rem', letterSpacing: '0.1em', color: 'var(--muted)', textTransform: 'uppercase', whiteSpace: 'nowrap', overflow: 'hidden', maxWidth: '42vw' }}>
           // WORLD_01 · THE SIGNAL
         </p>
-        <p className="mono" style={{ fontSize: '0.68rem', letterSpacing: '0.1em', color: 'var(--muted)', marginTop: '0.2rem' }}>
+        <p className="mono" style={{ fontSize: '0.62rem', letterSpacing: '0.08em', color: 'var(--muted)', marginTop: '0.15rem', whiteSpace: 'nowrap', overflow: 'hidden', maxWidth: '42vw' }}>
           MUDIAM NEHAL REDDY · HYDERABAD
         </p>
       </motion.div>
@@ -33,7 +33,7 @@ export function HeroOverlay() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="absolute top-8 right-8 flex items-center gap-2"
+        className="absolute top-6 right-4 sm:top-8 sm:right-8 flex items-center gap-2"
         style={{ pointerEvents: 'auto' }}
       >
         <span

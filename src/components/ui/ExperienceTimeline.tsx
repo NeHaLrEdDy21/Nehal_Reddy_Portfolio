@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { experiences, type Experience } from '@/data/experience'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 // ── Grouping ───────────────────────────────────────────────────────────────────
 
@@ -47,7 +48,7 @@ function FlipCard({
       initial={{ opacity: 0, y: 80 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.65, delay: 0.08 + index * 0.14, ease: [0.16, 1, 0.3, 1] }}
-      style={{ flex: meta.flex, position: 'relative', perspective: '1400px', cursor: 'pointer' }}
+      style={{ flex: meta.flex, position: 'relative', perspective: '1400px', cursor: 'pointer', minWidth: 0 }}
       onClick={() => setFlipped((f) => !f)}
     >
       <motion.div
@@ -97,10 +98,10 @@ function FlipCard({
             <h3
               className="display"
               style={{
-                fontSize: 'clamp(1.8rem, 4vw, 3.5rem)',
+                fontSize: 'clamp(1.2rem, 4vw, 3.5rem)',
                 color: meta.ink,
                 lineHeight: 0.9,
-                marginBottom: '0.9rem',
+                marginBottom: '0.6rem',
               }}
             >
               {meta.label}
@@ -212,6 +213,7 @@ function FlipCard({
 export function ExperienceTimeline() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-10%' })
+  const isMobile = useMediaQuery('(max-width: 639px)')
 
   const grouped = GROUP_ORDER.map((group) => ({
     group,
@@ -224,13 +226,15 @@ export function ExperienceTimeline() {
       className="relative z-10 h-full flex flex-col"
       style={{ pointerEvents: 'none' }}
     >
-      {/* World label — in flow, not absolute */}
+      {/* World label */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
         style={{
-          padding: 'clamp(2.5rem, 5vh, 4rem) clamp(1.5rem, 3vw, 2.5rem) 0.5rem',
+          padding: isMobile
+            ? '1.2rem 1.2rem 0.4rem'
+            : 'clamp(2.5rem, 5vh, 4rem) clamp(1.5rem, 3vw, 2.5rem) 0.5rem',
           pointerEvents: 'none',
           flexShrink: 0,
         }}
@@ -238,27 +242,32 @@ export function ExperienceTimeline() {
         <p
           className="mono"
           style={{
-            fontSize: '0.72rem',
+            fontSize: '0.65rem',
             letterSpacing: '0.15em',
             color: 'var(--muted)',
             textTransform: 'uppercase',
-            marginBottom: '0.3rem',
+            marginBottom: '0.2rem',
           }}
         >
           // WORLD_06 · THE STAGE
         </p>
         <h2
           className="display"
-          style={{ fontSize: 'clamp(4rem, 10vw, 8rem)', color: 'var(--ink)', lineHeight: 0.9 }}
+          style={{
+            fontSize: isMobile ? 'clamp(3rem, 14vw, 5rem)' : 'clamp(5rem, 13vw, 11rem)',
+            color: 'var(--ink)',
+            lineHeight: 0.9,
+          }}
         >
           THE STAGE.
         </h2>
       </motion.div>
 
-      {/* 3 flip cards — fill remaining height */}
+      {/* 3 flip cards — row on desktop, column on mobile */}
       <div
         style={{
           display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
           flex: 1,
           minHeight: 0,
           pointerEvents: 'auto',

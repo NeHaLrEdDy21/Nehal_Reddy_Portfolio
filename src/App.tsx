@@ -62,14 +62,14 @@ export default function App() {
         </section>
 
         {/* World 5 — The Kitchen */}
-        <section id="world-kitchen" style={{ height: '72vh', position: 'relative', overflow: 'hidden' }}>
+        <section id="world-kitchen" style={{ height: '90vh', position: 'relative', overflow: 'hidden' }}>
           <div style={{ pointerEvents: 'auto', height: '100%' }}>
             <KitchenOverlay />
           </div>
         </section>
 
         {/* World 6 — The Stage */}
-        <section id="world-stage" style={{ height: '72vh', position: 'relative', overflow: 'hidden' }}>
+        <section id="world-stage" style={{ height: '90vh', position: 'relative', overflow: 'hidden' }}>
           <div style={{ pointerEvents: 'auto', height: '100%' }}>
             <ExperienceTimeline />
           </div>

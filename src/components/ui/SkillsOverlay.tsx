@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { skills } from '@/data/skills'
 import { SkillMarquee } from './SkillMarquee'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 const SKILL_ICONS: Record<string, string> = {
   'Python': '🐍',
@@ -99,6 +100,7 @@ const CATEGORIES = ['languages', 'ml', 'web', 'tools', 'visualization'] as const
 export function SkillsOverlay() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-10%' })
+  const isMobile = useMediaQuery('(max-width: 639px)')
 
   return (
     <div ref={ref} className="relative z-10 h-full flex flex-col justify-end" style={{ pointerEvents: 'none' }}>
@@ -106,13 +108,16 @@ export function SkillsOverlay() {
         initial={{ opacity: 0, y: 40 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        data-lenis-prevent={isMobile ? '' : undefined}
         style={{
           position: 'relative',
           background: 'rgba(242,239,234,0.95)',
           backdropFilter: 'blur(20px)',
           borderTop: '1px solid var(--border)',
           pointerEvents: 'auto',
-          overflow: 'hidden',
+          overflowX: 'hidden',
+          overflowY: isMobile ? 'auto' : 'hidden',
+          maxHeight: isMobile ? '90vh' : 'none',
         }}
       >
         {/* Floating code decorations */}
